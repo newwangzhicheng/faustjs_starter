@@ -57,10 +57,10 @@ export default function Page() {
         </Hero>
         <section className={styles.explore}>
           <div className="wrap">
-            <h2>Explore this Example Project</h2>
+            <h2 className="text-8xl">Explore this Example Project</h2>
             <p>
               This headless example project uses{' '}
-              <a href="https://nextjs.org/">Next.js</a>,{' '}
+              <a href="https://nextjs.org/" className="text-amber-700">Next.js</a>,{' '}
               <a href="https://graphql.org/">GraphQL</a>,{' '}
               <a href="https://gqty.dev">GQty</a> and the{' '}
               <a href="https://github.com/wpengine/faustjs">
