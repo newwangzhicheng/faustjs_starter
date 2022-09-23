@@ -1,11 +1,13 @@
-import { getNextStaticProps } from '@faustjs/next';
+import {getNextStaticProps} from '@faustjs/next';
 
-import { GetStaticPropsContext } from 'next';
+import {GetStaticPropsContext} from 'next';
 import Head from 'next/head';
 import React from 'react';
-import { CTA, Footer, Header, Hero, Posts } from 'components';
+import {CTA, Footer, Header, Hero, Posts} from 'components';
 import styles from 'scss/pages/home.module.scss';
-import { client } from 'client';
+import {client} from 'client';
+import {useRouter} from 'next/router';
+import {useTranslation} from 'next-i18next';
 
 export default function Page() {
   const { usePosts, useQuery } = client;
@@ -15,10 +17,14 @@ export default function Page() {
     where: {
       categoryName: 'uncategorized',
     },
-  });
+  })
 
+  const router = useRouter();
+  const { t } = useTranslation('common');
   return (
     <>
+      <h1>{router.locale}</h1>
+      <p>{t('hello world')}</p>
       <Header
         title={generalSettings.title}
         description={generalSettings.description}
@@ -183,6 +189,6 @@ export default function Page() {
 export async function getStaticProps(context: GetStaticPropsContext) {
   return getNextStaticProps(context, {
     Page,
-    client,
+    client
   });
 }
